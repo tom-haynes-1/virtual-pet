@@ -1,4 +1,6 @@
 const maximumFitness = 10;
+const fidoIsHungry = 3;
+const minimumHunger = 0;
 
 function Pet(name) {
     this.name = name;
@@ -11,8 +13,8 @@ Pet.prototype.growUp = function () {
     this.age +=1;
 
     if (this.age >= 1) {
-        this.fitness = this.fitness - 3;
-        this.hunger = this.hunger + 5;
+        this.fitness -= 3;
+        this.hunger += 5;
     }
 };
 
@@ -22,7 +24,29 @@ Pet.prototype.walk = function() {
     } else {
       this.fitness = maximumFitness;
     }
-  }
+};
+
+Pet.prototype.feed = function () {
+    if((this.hunger - fidoIsHungry) >= minimumHunger) {
+        this.hunger -= fidoIsHungry;
+    } else {
+        this.hunger = minimumHunger;
+    }
+};
+
+Pet.prototype.checkUp = function () {
+    if ((this.fitness <= 3) && (this.hunger >= 5)) {
+        return 'I am hungry AND I need a walk'
+    } else if ((this.fitness <= 3)) {
+        return 'I need a walk'
+    } else if ((this.hunger >= 5)) {
+        return 'I am hungry'
+    } else {
+        return 'I feel great!'
+    }
+};
+
+
 
 
 module.exports = Pet;
