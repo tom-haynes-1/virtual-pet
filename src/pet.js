@@ -7,6 +7,7 @@ function Pet(name) {
     this.age = 0;
     this.fitness = maximumFitness;
     this.hunger = 0;
+    this.children = [];
 };
 
 Pet.prototype = {
@@ -53,7 +54,7 @@ Pet.prototype.checkUp = function () {
     if(!this.isAlive) {
         return "Fido has passed away :(";
     }
-    
+
     if (this.fitness <= 3 && this.hunger >= 5) {
         return 'I am hungry AND I need a walk'
     } else if ((this.fitness <= 3)) {
@@ -65,6 +66,9 @@ Pet.prototype.checkUp = function () {
     }
 };
 
+Pet.prototype.haveBaby = function (name) {
+    this.children.push(new Pet(name));
+};
 
 
 

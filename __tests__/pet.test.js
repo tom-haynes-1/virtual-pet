@@ -198,6 +198,24 @@ describe("isAlive", () => {
 
     });
 
+    describe("haveBaby", () => {
+        it("make a parent instance of Pet object", () => {
+            const parent = new Pet("Dave");
+
+        expect(new Pet("Dave")).toBeInstanceOf(Pet);
+
+    });
+
+        it("The children property of the parent Pet object is an array, first element of array is a new instance of Pet", () => {
+            const parent = new Pet("Dave");
+
+            parent.haveBaby("Amelia");
+
+            expect(parent.children).toEqual([{name: "Amelia", age: 0, hunger: 0, fitness: 10, children: [] }])
+
+    });
+});
+
         });
     });
 });
